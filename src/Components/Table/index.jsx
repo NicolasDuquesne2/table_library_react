@@ -32,7 +32,6 @@ function Table({payload}) {
 
     /**
      * If table datas array has data, then TableBody component is called with passing needed params
-     * 
      */
     if (tableData.length > 0) {
         tableBody = <TableBody columns={payload.columns} datas={silcedtableData} />
