@@ -133,6 +133,7 @@ function Pagination({paginatorParams, selectPageNumber}) {
         pageNumber > 1? previousButtonRef.current.disabled = false: previousButtonRef.current.disabled = true
         pageNumber < totalPages?  nextButtonRef.current.disabled = false: nextButtonRef.current.disabled = true
         
+
         /**
          * Purges the pages buttons ref. tipicaly usefull when the total of pages changes. The ref table tends to keep dead refs
          */
