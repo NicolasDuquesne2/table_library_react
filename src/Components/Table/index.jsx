@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useTableData } from '../../Hooks/useTableData'
 import { usePaginator } from '../../Hooks/usePaginator'
 import TableHeader from '../TableHeader'
@@ -8,22 +8,19 @@ import Filter from '../Filter'
 import PaginationSelector from '../PaginationSelector'
 import './table.css'
 
+
+/**
+ * 
+ * @module Table
+ */
+
 /**
  * The tab component is a central componenent witch must display the tab with its children 
  * component and provide an interface between data manipulations and its children 
  * 
- * ## Usage
- * 
- * ```jsx
- * <Tabs>
- *  <Tab>Contenu<Tab>
- * <Tabs>
- * ```
+ * @return {React.ReactComponentElement}
  * 
  */
-
-
-
 function Table({payload}) {
     const [pageNumber, setPageNumber] = useState(1)
     const [rowsPerPage, setRowsPerPage] = useState(10)
