@@ -3,6 +3,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 import "./tableheader.css"
 
+
+/**
+ * 
+ * @module TableHeader
+ */
+
+/**
+ * The TableHeader is responsable for displaying the table headers
+ * manages sorting interactions
+ * 
+ * pass a payload object {datas, columns}
+ * 
+ * @param {Array} props.handleSorting handleSorting is the Table component function in order to sort datas
+ * @param {Array} props.columns columns contains each Header params like label accessor & sortable option
+ * @returns {React.ReactComponentElement}
+ */
 function TableHeader({columns, handleSorting}) {
 
     const [sortField, setSortField] = useState("")
@@ -10,6 +26,13 @@ function TableHeader({columns, handleSorting}) {
 
     let icon = null
 
+
+    /**
+     * handleSortingChange fires on a header clicking
+     * first switch the sorting order
+     * then pass accessor and the order to the handleSorting function
+     * @param {string} accessor 
+     */
     const handleSortingChange = (accessor) => {
         const switchOrder = accessor === sortField && order === "asc" ? "desc": "asc"
         setSortField(accessor)
