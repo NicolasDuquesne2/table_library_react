@@ -1,4 +1,18 @@
+/**
+ * 
+ * @module TableBody
+ */
 
+/**
+ * The TableBody
+ * 
+ * pass a payload object {datas, columns}
+ * 
+ * @return {React.ReactComponentElement}
+ * @param {Array} props.datas datas contains each line for the table link to the columns by accessor name 
+ * @param {Array} props.columns columns contains each Header params like label accessor & sortable option
+ * @returns {React.ReactComponentElement}
+ */
 function TableBody({datas, columns}) {
     return(
         <tbody>

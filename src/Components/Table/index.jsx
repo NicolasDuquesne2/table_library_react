@@ -17,11 +17,9 @@ import './table.css'
 /**
  * The tab component is a central componenent witch must display the tab with its children 
  * component and provide an interface between data manipulations and its children 
- * 
- * pass a payload object {datas, columns}
- * 
+ *  
  * @return {React.ReactComponentElement}
- * @param {Object} payload
+ * @param {Object} payload pass a payload object {datas, columns}
  * 
  */
 function Table({payload}) {
