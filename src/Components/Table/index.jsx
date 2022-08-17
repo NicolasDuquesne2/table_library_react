@@ -18,7 +18,10 @@ import './table.css'
  * The tab component is a central componenent witch must display the tab with its children 
  * component and provide an interface between data manipulations and its children 
  * 
+ * pass a payload object {datas, columns}
+ * 
  * @return {React.ReactComponentElement}
+ * @param {Object} payload
  * 
  */
 function Table({payload}) {
@@ -29,26 +32,52 @@ function Table({payload}) {
     const [paginatorParams] = usePaginator(getTableLength(), rowsPerPage, pageNumber, silcedtableData)
     let tableBody = null
 
-    //get current table lines
+    /**
+     * If table datas array has data, then TableBody component is called with passing needed params
+     * 
+     */
     if (tableData.length > 0) {
         tableBody = <TableBody columns={payload.columns} datas={silcedtableData} />
     }
 
 
+    /**
+     * selectPageNumber sets the page number for displaying datas by slice
+     * @param {number} num
+     * 
+     */
     const selectPageNumber = (num) => {
         setPageNumber(num)
     }
-
+    
+     /**
+     * selectRowsPerPage resets the page number to 1 and sets rows per page. 
+     * Changing rows per pages displays the first page of the new slice rule 
+     * @param {number} rows
+     * 
+     */
     const selectRowsPerPage = (rows) => {
         setPageNumber(1)
         setRowsPerPage(rows)
     }
 
+    /**
+     * handleFilter resets the page number to 1 and filter datas with search bar content
+     * Searching displays the first page of the search result 
+     * @param {Array} data
+     * 
+     */
     const handleFilter = (data) => {
         setPageNumber(1)
         filter(data)
     }
 
+    /**
+     * handleSorting sorts the current datas (orginal or filtered) array with an order instruction
+     * @param {string} sortField
+     * @param {string} sortOrder
+     * 
+     */
     const handleSorting = (sortField, sortOrder) => {
         sorting(sortField, sortOrder)
     }
