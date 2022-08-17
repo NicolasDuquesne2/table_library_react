@@ -1,6 +1,25 @@
 import SelectMenu from "../SelectMenu";
 import './paginator.css'
 
+/**
+ * 
+ * @module PaginationSelector
+ */
+
+/**
+ * @callback selectRowsPerPage
+ * selectRowsPerPage resets the page number to 1 and sets rows per page. 
+ * Changing rows per pages displays the first page of the new slice rule 
+ * @param {number} rows
+ */
+
+
+/**
+ * Renders the list of rows per pages options & manages selections interactions
+ * @callback selectRowsPerPage
+ * @param {selectRowsPerPage} callback 
+ * @returns {React.ReactComponentElement}
+ */
 function PaginationSelector({selectRowsPerPage}) {
 
     const pagesNumbers = ["10", "25", "50", "100"]

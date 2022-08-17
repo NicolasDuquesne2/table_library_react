@@ -9,13 +9,20 @@ import "./tableheader.css"
  * @module TableHeader
  */
 
+
+/**
+ * handleSorting sorts the current datas (orginal or filtered) array with an order instruction
+ * @callback handleSorting
+ * @param {string} sortField
+ * @param {string} sortOrder
+ */
+
 /**
  * The TableHeader is responsable for displaying the table headers
  * manages sorting interactions
  * 
  * pass a payload object {datas, columns}
- * 
- * @param {Array} props.handleSorting handleSorting is the Table component function in order to sort datas
+ * @param {handleSorting} callback
  * @param {Array} props.columns columns contains each Header params like label accessor & sortable option
  * @returns {React.ReactComponentElement}
  */
