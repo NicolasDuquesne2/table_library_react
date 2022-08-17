@@ -1,0 +1,15 @@
+.paginator-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.paginator-selector {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background: white;
+    margin: 0 5px 0 5px;
+}
+
+.paginator-text {
+    margin: 0;
+}
