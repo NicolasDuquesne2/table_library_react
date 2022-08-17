@@ -1,7 +1,26 @@
 import {useEffect, useRef, useState } from 'react'
-
 import './pagination.css'
 
+
+/**
+ * 
+ * @module Pagination
+ */
+
+/**
+ * selectPageNumber sets the page number for displaying datas by slice
+ * @callback selectPageNumber
+ * @param {number} number
+ */
+
+
+/**
+ * Renders the Table bottom part : navigation buttons and view counter
+ * Is responseble for selecting pages selections
+ * @param {selectPageNumber} callback
+ * @param {Object} paginatorParams contains totalPages, pageNumber, slicedDataParams, totalRows variables 
+ * @returns {React.ReactComponentElement}
+ */
 function Pagination({paginatorParams, selectPageNumber}) {
 
     const nextButtonRef = useRef(null)
@@ -16,28 +35,54 @@ function Pagination({paginatorParams, selectPageNumber}) {
         pageNumbersArr.push(i)
     }
 
+    /**
+     * addToRefs feed the numberButtonsRef object, containing buttons references
+     * @param {Object} element button object 
+     * 
+     */
     const addToRefs = (element) => {
         if(element && !numberButtonsRef.current.includes(element)) {
             numberButtonsRef.current.push(element)
         }
     }
 
+    /**
+     * highlightButton applay a select style for a selected button
+     * @param {number} pageNumber page number selected 
+     * 
+     */
     const highlightButton = (pageNumber) => {
         const indexPageNumber = pageNumber -1
         numberButtonsRef.current[indexPageNumber].classList.add('highlighted')
         numberButtonsRef.current[indexPageNumber].classList.remove('page-button')
     }
 
+    /**
+     * highlightButton remove the select style on a button
+     * typicaly for unselected buttons
+     * @param {number} pageNumber page number selected 
+     * 
+     */
     const disHighlightButton = (pageNumber) => {
         const indexPageNumber = pageNumber -1
         numberButtonsRef.current[indexPageNumber].classList.add('page-button')
         numberButtonsRef.current[indexPageNumber].classList.remove('highlighted')
     }
 
+     /**
+     * onPageButton fires on a numbered button click. Launches the selectPageNumber callback
+     * @param {number} number page number get by button value
+     * 
+     */
     const onPageButton = (e, number) => {
         selectPageNumber(number)
     }
 
+    /**
+     * onSideButton fires on previous or next button. Sets a new page number and launches the selectedPageNumber function
+     * @param {Object} e event object
+     * 
+     */
     const onSideButton = (e) => {
 
         const sideButton = e.target
@@ -57,25 +102,40 @@ function Pagination({paginatorParams, selectPageNumber}) {
         }
     }
 
-    //the useEffect manages the buttons pages highlights
     
+    /**
+    * the useEffect manages the buttons pages highlights
+    * fires on pageNumber or totalPages changings
+    * @param {number} pageNumber a page number
+    * @param {number} totalPages a total pages
+    */
     useEffect(() => {
 
-        // if buttons refs are available, dishighlight previous button and highlight current button 
+        /**
+        * If buttons refs are available, dishighlight previous button and highlight current button
+        */
         if (numberButtonsRef.current.length > 0) {
             disHighlightButton(localPageNumber)
             highlightButton(pageNumber)
         }
     
+        /**
+        * Registers the page number in a local page number state
+        * used to dishighlight an unselected button
+        */
         if(localPageNumber > 0 ) {
             setLocalPageNumber(pageNumber)
         }
 
-        //activate or deactivate previous and next button according to the page button selected
+        /**
+         * Activate or deactivate previous and next button according to the page button selected
+         */
         pageNumber > 1? previousButtonRef.current.disabled = false: previousButtonRef.current.disabled = true
         pageNumber < totalPages?  nextButtonRef.current.disabled = false: nextButtonRef.current.disabled = true
         
-        //purges the pages buttons ref. tipicaly usefull when the total of pages changes. The ref table tends to keep dead refs
+        /**
+         * Purges the pages buttons ref. tipicaly usefull when the total of pages changes. The ref table tends to keep dead refs
+         */
         numberButtonsRef.current = []
 
     }, [pageNumber, totalPages])
