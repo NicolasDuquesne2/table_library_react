@@ -22,7 +22,8 @@ import './table.css'
  * @param {Object} payload pass a payload object {datas, columns}
  * 
  */
-function Table({payload}) {
+function Table(props) {
+    const payload = props.payload
     const [pageNumber, setPageNumber] = useState(1)
     const [rowsPerPage, setRowsPerPage] = useState(10)
     const [tableData, filter, sorting, sliceTableData, getTableLength] = useTableData(payload.datas, rowsPerPage, pageNumber)
