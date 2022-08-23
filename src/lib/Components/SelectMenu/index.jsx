@@ -1,4 +1,4 @@
-//@ts-no-check
+import React from 'react'
 import './selectmenu.css'
 
 

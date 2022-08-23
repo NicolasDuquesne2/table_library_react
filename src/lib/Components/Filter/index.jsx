@@ -1,5 +1,5 @@
 import './filter.css'
-
+import React from 'react'
 /**
  * 
  * @module Filter
