@@ -1,6 +1,6 @@
 # Project 14 - React Table library
+Carefull. This is a teaching and training library 
 
-This repo contains the source code for a table library for react
 
 ## 1. General informations
 
@@ -8,7 +8,7 @@ This library provides a table for displaying datas. It provides sorting, fiterin
 
 ## 2. Project installation
 
-Type "npm i tablelibreact" in a terminal
+Type "npm i table-library-react" in a terminal
 
 ## 3. Use the library
 

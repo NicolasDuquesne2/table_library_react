@@ -1,6 +1,6 @@
 {
   "name": "table-library-react",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "nicolas_duquesne",
   "private": false,
   "main": "dist/index.js",
